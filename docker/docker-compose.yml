@@ -1,0 +1,29 @@
+---
+services:
+  bch:
+    build: 
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    container_name: bch
+    networks:
+      - traefik
+    labels:      
+      - traefik.enable=true
+      - traefik.http.routers.bch.entrypoints=web
+      - traefik.http.routers.bch.service=noop@internal
+      - traefik.http.routers.bch.middlewares=redirect-to-https@file
+      - traefik.http.routers.bch.rule=Host(`bch.medeirosdev.com.br`)
+      
+      - traefik.http.routers.bch-https.tls=true
+      - traefik.http.routers.bch-https.service=bch
+      - traefik.http.routers.bch-https.entrypoints=websecure
+      - traefik.http.routers.bch-https.rule=Host(`bch.medeirosdev.com.br`)
+      - traefik.http.services.bch.loadbalancer.server.port=5000
+
+      - traefik.http.routers.bch-https.tls.certresolver=production
+      - traefik.http.routers.bch-https.tls.domains[0].main=vps2.medeirosdev.com.br
+      - "traefik.http.routers.bch-https.tls.domains[0].sans=*.vps2.medeirosdev.com.br"
+
+networks:
+  traefik:
+    external: true

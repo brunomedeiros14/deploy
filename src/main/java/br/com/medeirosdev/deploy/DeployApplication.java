@@ -23,4 +23,8 @@ class HelloController {
 	String hello() {
 		return "Hello World!";
 	}
+	@GetMapping("/2")
+	String hello2() {
+		return "Hello World! 2";
+	}
 }
