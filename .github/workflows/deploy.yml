@@ -29,4 +29,4 @@ jobs:
         run: scp -oStrictHostKeyChecking=no -r $(pwd)/* ${{ env.VPS_USUARIO }}@${{ env.VPS_IP }}:${{ env.PASTA_APLICACAO }}
 
       - name: Executar build docker
-        run: ssh ${{ env.VPS_USUARIO }}@${{ env.VPS_IP }} 'docker-compose -f ${{ env.PASTA_APLICACAO }}/docker/docker-compose.yml up --build -d --force-recreate'
+        run: ssh ${{ env.VPS_USUARIO }}@${{ env.VPS_IP }} 'sudo docker compose -f ${{ env.PASTA_APLICACAO }}/docker/docker-compose.yml up --build -d --force-recreate'
