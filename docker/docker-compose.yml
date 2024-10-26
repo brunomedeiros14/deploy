@@ -1,7 +1,9 @@
 ---
 services:
   deploy:
-    build: .
+    build: 
+      context: ../
+      dockerfile: ./docker/Dockerfile
     container_name: deploy
     networks:
       - traefik
