@@ -1,28 +1,26 @@
 ---
 services:
-  deploy:
+  ultimoteste:
     build: 
       context: ../
       dockerfile: ./docker/Dockerfile
-    container_name: deploy
+    container_name: ultimoteste
     networks:
       - traefik
     labels:      
       - traefik.enable=true
-      - traefik.http.routers.deploy.entrypoints=web
-      - traefik.http.routers.deploy.service=noop@internal
-      - traefik.http.routers.deploy.middlewares=redirect-to-https@file
-      - traefik.http.routers.deploy.rule=Host(`testeapp.vps2.medeirosdev.com.br`)
+      - traefik.http.routers.ultimoteste.entrypoints=web
+      - traefik.http.routers.ultimoteste.service=noop@internal
+      - traefik.http.routers.ultimoteste.middlewares=redirect-to-https@file
       
-      - traefik.http.routers.deploy-https.tls=true
-      - traefik.http.routers.deploy-https.service=deploy
-      - traefik.http.routers.deploy-https.entrypoints=websecure
-      - traefik.http.routers.deploy-https.rule=Host(`testeapp.vps2.medeirosdev.com.br`)
-      - traefik.http.services.deploy.loadbalancer.server.port=8080
+      - traefik.http.routers.ultimoteste-https.tls=true
+      - traefik.http.routers.ultimoteste-https.service=ultimoteste
+      - traefik.http.routers.ultimoteste-https.entrypoints=websecure
+      - traefik.http.services.ultimoteste.loadbalancer.server.port=8080
 
-      - traefik.http.routers.deploy-https.tls.certresolver=production
-      - traefik.http.routers.deploy-https.tls.domains[0].main=vps2.medeirosdev.com.br
-      - "traefik.http.routers.deploy-https.tls.domains[0].sans=*.vps2.medeirosdev.com.br"
+      - traefik.http.routers.ultimoteste-https.tls.certresolver=production
+      - traefik.http.routers.ultimoteste-https.tls.domains[0].main=vps2.medeirosdev.com.br
+      - "traefik.http.routers.ultimoteste-https.tls.domains[0].sans=*.vps2.medeirosdev.com.br"
 
 networks:
   traefik:
