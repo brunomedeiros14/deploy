@@ -1,28 +1,28 @@
 ---
 services:
-  bch:
+  deploy:
     build: 
       context: ../
       dockerfile: ./docker/Dockerfile
-    container_name: bch
+    container_name: deploy
     networks:
       - traefik
     labels:      
       - traefik.enable=true
-      - traefik.http.routers.bch.entrypoints=web
-      - traefik.http.routers.bch.service=noop@internal
-      - traefik.http.routers.bch.middlewares=redirect-to-https@file
-      - traefik.http.routers.bch.rule=Host(`bch.vps2.medeirosdev.com.br`)
+      - traefik.http.routers.deploy.entrypoints=web
+      - traefik.http.routers.deploy.service=noop@internal
+      - traefik.http.routers.deploy.middlewares=redirect-to-https@file
+      - traefik.http.routers.deploy.rule=Host(`deploy.vps2.medeirosdev.com.br`)
       
-      - traefik.http.routers.bch-https.tls=true
-      - traefik.http.routers.bch-https.service=bch
-      - traefik.http.routers.bch-https.entrypoints=websecure
-      - traefik.http.routers.bch-https.rule=Host(`bch.vps2.medeirosdev.com.br`)
-      - traefik.http.services.bch.loadbalancer.server.port=8080
+      - traefik.http.routers.deploy-https.tls=true
+      - traefik.http.routers.deploy-https.service=deploy
+      - traefik.http.routers.deploy-https.entrypoints=websecure
+      - traefik.http.routers.deploy-https.rule=Host(`deploy.vps2.medeirosdev.com.br`)
+      - traefik.http.services.deploy.loadbalancer.server.port=8080
 
-      - traefik.http.routers.bch-https.tls.certresolver=production
-      - traefik.http.routers.bch-https.tls.domains[0].main=vps2.medeirosdev.com.br
-      - "traefik.http.routers.bch-https.tls.domains[0].sans=*.vps2.medeirosdev.com.br"
+      - traefik.http.routers.deploy-https.tls.certresolver=production
+      - traefik.http.routers.deploy-https.tls.domains[0].main=vps2.medeirosdev.com.br
+      - "traefik.http.routers.deploy-https.tls.domains[0].sans=*.vps2.medeirosdev.com.br"
 
 networks:
   traefik:
