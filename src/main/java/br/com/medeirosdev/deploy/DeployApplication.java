@@ -27,4 +27,10 @@ class HelloController {
 	String hello2() {
 		return "Hello World! 2";
 	}
+	@GetMapping("/jhonata-teste")
+	Person jhonataTeste() {
+		return new Person("Jhonata", "Medeiros");
+	}
 }
+
+record Person(String firstName, String lastName) {}
