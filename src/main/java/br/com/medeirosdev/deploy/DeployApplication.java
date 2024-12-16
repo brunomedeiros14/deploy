@@ -19,25 +19,9 @@ public class DeployApplication {
 @RequestMapping("/")
 class HelloController {
 
-	@GetMapping
+	@GetMapping("/ping")
 	String hello() {
-		return "Hello World!";
-	}
-	@GetMapping("/2")
-	String hello2() {
-		return "Hello World! 2";
-	}
-	@GetMapping("/jhonata-teste")
-	Person jhonataTeste() {
-		return new Person("Jhonata", "Medeiros");
-	}
-	@GetMapping("/paulo")
-	Person pauloTeste() {
-		return new Person("Paulo", "Medeiros");
-	}
-	@GetMapping("/teste")
-	Student testeStudent() {
-		return new Student("Aluno teste", 60, 44412314);
+		return "pong!";
 	}
 }
 
