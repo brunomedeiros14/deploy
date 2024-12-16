@@ -1,5 +1,6 @@
 package br.com.medeirosdev.deploy;
 
+import com.github.javafaker.Faker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,16 @@ class HelloController {
 	@GetMapping("/ping")
 	String hello() {
 		return "pong!";
+	}
+}
+
+@RestController
+@RequestMapping("/person")
+class PersonController {
+
+	@GetMapping
+	Person getSomePerson() {
+		return new Person(new Faker().name().firstName(), new Faker().name().lastName());
 	}
 }
 
