@@ -35,6 +35,12 @@ class HelloController {
 	Person pauloTeste() {
 		return new Person("Paulo", "Medeiros");
 	}
+	@GetMapping("/teste")
+	Person pauloTeste() {
+		return new Student("Aluno teste", 60, 44412314);
+	}
 }
 
 record Person(String firstName, String lastName) {}
+
+record Student(String name, Integer average, Integer register)
