@@ -36,7 +36,7 @@ class HelloController {
 		return new Person("Paulo", "Medeiros");
 	}
 	@GetMapping("/teste")
-	Student pauloTeste() {
+	Student testeStudent() {
 		return new Student("Aluno teste", 60, 44412314);
 	}
 }
