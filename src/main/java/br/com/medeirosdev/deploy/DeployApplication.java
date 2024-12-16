@@ -16,7 +16,7 @@ public class DeployApplication {
 }
 
 @RestController
-@RequestMapping("/")
+@RequestMapping
 class HelloController {
 
 	@GetMapping("/ping")
