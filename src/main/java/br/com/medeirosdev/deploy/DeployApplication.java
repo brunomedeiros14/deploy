@@ -43,4 +43,4 @@ class HelloController {
 
 record Person(String firstName, String lastName) {}
 
-record Student(String name, Integer average, Integer register)
+record Student(String name, Integer average, Integer register) {}
