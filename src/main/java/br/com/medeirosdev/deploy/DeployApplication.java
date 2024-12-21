@@ -18,11 +18,21 @@ public class DeployApplication {
 
 @RestController
 @RequestMapping
-class HelloController {
+class PingController {
 
 	@GetMapping("/ping")
-	String hello() {
+	String ping() {
 		return "pong!";
+	}
+}
+
+@RestController
+@RequestMapping
+class HelloController {
+
+	@GetMapping("/hello")
+	String hello() {
+		return "Hello World!";
 	}
 }
 
