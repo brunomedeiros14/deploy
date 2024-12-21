@@ -37,5 +37,3 @@ class PersonController {
 }
 
 record Person(String firstName, String lastName) {}
-
-record Student(String name, Integer average, Integer register) {}
